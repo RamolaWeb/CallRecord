@@ -19,7 +19,7 @@ public class Recorder {
 
     private void initiateMediaRecorder(){
         mediaRecorder=new MediaRecorder();
-        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.VOICE_CALL);
+        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
         mediaRecorder.setOutputFile(setFileName());
         mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
