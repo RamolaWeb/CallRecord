@@ -4,6 +4,7 @@ package com.ramola.callrecord.CallRecorder;
 import android.media.MediaRecorder;
 import android.os.Environment;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Recorder {
@@ -18,14 +19,17 @@ public class Recorder {
 
     private void initiateMediaRecorder(){
         mediaRecorder=new MediaRecorder();
-        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.VOICE_CALL);
+        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
         mediaRecorder.setOutputFile(setFileName());
-        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
     }
 
     private String setFileName(){
-        return Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+fileName+".3gp";
+        File folder=Environment.getExternalStoragePublicDirectory("Call Recording");
+        if(!folder.exists())
+            folder.mkdir();
+        return folder.getAbsolutePath()+"/"+fileName+".mp3";
     }
 
     public void setRecord(boolean isPlay){

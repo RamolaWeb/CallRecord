@@ -14,7 +14,6 @@ public class ManagerCall extends CallReceiver {
     @Override
     public void onIncomingCallStarted(Context context, String number, Date startTime) {
         recorder = new Recorder(number + " Incoming Call at " + startTime.getTime());
-
         recorder.setRecord(true);
     }
 
